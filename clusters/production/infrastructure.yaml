@@ -14,6 +14,14 @@ spec:
   path: ./infrastructure/controllers
   prune: true
   wait: true
+  patches:
+    - patch: |
+        - op: replace
+          path: /metadata/namespace
+          value: flux-ingress-nginx
+      target:
+        kind: HelmRelease
+        name: ingress-nginx
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
